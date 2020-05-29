@@ -22,6 +22,9 @@ const profissionaisMelhores = profissionais.map(profissional => {
   return profissional + "a";
 })
 
+
+
+
 // 2) Retornar frutas com somente a primeira letra maiúscula
 const frutas = ["maçã", "banana", "Pera", "Melancia", "pêsSSEgO", "jAcA"];
 
@@ -42,6 +45,12 @@ const frutasFormatadas = frutas.map(
     return letraInicial + itemSemPrimeiraLetra;
   }
 );
+
+//const frutasFormatadas = frutas.map(() => {
+  //i =0;
+
+//})
+
 
 // filter(): retorna uma nova array com apenas com elementos que atendem à condição
 
@@ -92,20 +101,73 @@ const transacoes = [
   { descricao: "salario 1", valor: 8500, tipo: "saída" }
 ];
 
-const lucro = transacoes.reduce((acc, curr) => curr.tipo === "entrada" ? acc + curr.valor : acc - curr.valor, 0)
-
+ const lucro = transacoes.reduce(
+   (acumulado, item) => {
+     console.log('acumulado', acumulado);
+     console.log('item', item);
+     return acumulado.valor + item.valor; 
+    }
+ );
 // sort(): organiza itens da array de acordo com uma verificação
 
 // 1) Organizar números de forma decrescente
 const numDecrescente = [...num].sort((a , b) => b - a);
 
 // 2) Organizar pessoas por ordem alfabética
-const pessoasAlfabetico = [...pessoas].sort((a, b) => {
-  if (a.nome < b.nome) {
-    return -1;
-  } else if (a.nome > b.nome) {
-    return 1;
-  } else {
-    return 0;
+
+
+
+const notasAlunas = [
+  { nome: "Julia", notas: [
+      { materia: "matemática", nota: 7, peso: 1.5 },
+      { materia: "portugues", nota: 3, peso: 2 }
+    ]
+  },
+  { nome: "Zelia", notas: [
+      { materia: "matemática", nota: 6, peso: 1.5 },
+      { materia: "portugues", nota: 5, peso: 2 }
+    ]
+  },
+  { nome: "Jussara", notas: [
+      { materia: "matemática", nota: 8, peso: 1.5 },
+      { materia: "portugues", nota: 2, peso: 2 }
+    ]
   }
-});
+]
+
+const notasFinaisAlunas = notasAlunas.map (
+  (aluna) => {
+
+    //console.log(aluna.notas);
+
+    let somaNotas = 0;
+    let somaPesos = 0;
+
+    /*aluna.notas.reduce((nota) => {
+      somaNotas += nota.nota * nota.peso
+      somaPesos += peso;
+    });*/
+
+    
+
+    const novaAluna = {
+      nome: aluna.nome,
+      notaFinal: aluna.notas.reduce((notaFinalReduce, nota) => {
+        somaNotas += nota.nota * nota.peso
+        somaPesos += nota.peso;
+        notaFinalReduce = somaNotas / somaPesos
+        return notaFinalReduce
+      })
+    }
+    console.log(novaAluna);
+    return novaAluna;
+  });
+
+    /*for(let i=0; i < arrNotas.length; i++) {
+      const nota = arrNotas[i].nota;
+      const peso = arrNotas[i].peso;
+      const notaFinalMateria = nota * peso;
+      somaNotas += notaFinalMateria;
+      somaPesos += peso;
+    }*/
+  

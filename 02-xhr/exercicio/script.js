@@ -8,9 +8,23 @@ const form = document.getElementById('pkmForm');
 const input = document.getElementById('pkmInput');
 const pkmPlaceholder = document.getElementById('pkmPlaceholder');
 
-const chamarRequisicao = (e) => {
+/*const chamarRequisicao = (e) => {
   e.preventDefault();
-  // https://pokeapi.co/api/v2/pokemon/ditto/
+  const requisitoPok = new XMLHttpRequest();
+
+  requisitoPok.open('GET',`https://pokeapi.co/api/v2/pokemon/${input.value`});
+
+  const url = `https://pokeapi.co/api/v2/pokemon/ditto'/${nomePokemon}/`requisitoPok.true
+
+  requisitoPok.addEventListener('readystatechange',() => {
+    if(requisitoPok.readyState ===4 && requisitoPok.status === 200){
+      const save = JSON.parse(requisitoPok.response)
+      pkmPlaceholder.=save.name
+
+    }
+  })
 }
 
 form.addEventListener('submit', (e) => chamarRequisicao(e));
+*/
+
